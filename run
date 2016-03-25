@@ -1,4 +1,5 @@
 #!/bin/bash
 #Run HeatPinchTool
 python3 streamsorter.py;
-python3 tablealgorithm.py
+python3 tablealgorithm.py;
+python3 graph.py
