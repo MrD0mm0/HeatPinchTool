@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 # Stream format [Supply Temp (Ts), Target Temp (Tt), DH, CP, Cold(0)/Hot(1) {, Ts shift, Tt shift}]
 def file_len(fname):
     with open(fname) as f:
@@ -16,7 +18,7 @@ with open('streams') as f:
         lc+=1
 
 Tshift=[]
-DTmin=float(input('DTmin - Minimum approach temperature= '))
+DTmin=float(input('DTmin - Minimum approach temperature (oC)= '))
 n=len(stream) # Number of streams
 for i in range(0,n):
     if stream[i][4]==0:
@@ -56,13 +58,11 @@ for i in range(0,len(heatflow)):
         pinch=heatflow[i][1]
         
 res=open('.qcmin','w')
+results=open('results','w')
 phot= pinch+DTmin/2
 pcold=pinch-DTmin/2
 qhmin=-lowest
 qcmin=heatflow[len(heatflow)-1][0]-lowest
-print('Pinch shifted T=', pinch,'oC')
-print('Pinch for Hot streams=',phot,'oC')
-print('Pinch for Cold streams=', pcold,'oC')
-print('QHmin=',qhmin,'kW')
-print('QCmin=',qcmin,'kW')
 res.write(str(qcmin))
+results.write(tabulate([['QCmin',qcmin,'kW'],['QHmin',qhmin,'kW'],['Pinch (Shifted)',pinch,'oC'],['Pinch (Hot streams)',phot,'oC'],['Pinch (Cold streams)',pcold,'oC']]))
+print('Results stored in results file')
