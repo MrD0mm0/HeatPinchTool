@@ -1,9 +1,9 @@
 # HeatPinchTool
 A tool written in Python to identify the heat pinch temperature, and thus solve for the maximum heat recovery possible.
 
-**This program requires to be installed**:
+**This program requires:**:
 * [Python 3](https://www.python.org/downloads/)
-* [Plotly](https://plot.ly/python/getting-started/)
+* [MatPlotLib](http://matplotlib.org/users/installing.html)
 * [tabulate](https://pypi.python.org/pypi/tabulate)
 
 **Running**:

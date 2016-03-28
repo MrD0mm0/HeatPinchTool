@@ -1,5 +1,4 @@
-from plotly.offline import plot
-from plotly.graph_objs import Scatter,Layout,Figure
+import matplotlib.pyplot as plt
 
 def file_len(fname):
     with open(fname) as f:
@@ -80,8 +79,9 @@ cH=[]
 for i in range(0,len(c)):
     cT.append(c[i][0])
     cH.append(c[i][1])
-trace0=Scatter(x=cH, y=cT, mode='lines+markers', name='Cold Composite Curve')
-trace1=Scatter(x=hH, y=hT, mode='lines+markers', name='Hot Composite Curve')
-layout=Layout(xaxis=dict(title='H (kW)'),yaxis=dict(title='T (oC)'))
-fig=Figure(data=[trace0,trace1], layout=layout)
-plot(fig)
+plt.plot(hH,hT,'.r-',cH,cT,'.b-')
+plt.ylabel('T (oC)')
+plt.xlabel('H (kW)')
+plt.title('Hot and Cold Composite Curves')
+plt.legend(['Hot Stream','Cold Stream'],loc='upper left')
+plt.show()
