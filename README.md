@@ -8,6 +8,7 @@ A tool written in Python to identify the heat pinch temperature, and thus solve 
 
 **Running**:
 * On Linux run the shell script `./run`
+* On Windows run `run.bat`
 * Or run the induvidual programs:
   * streamsorter.py
   * tablealgorithm.py
